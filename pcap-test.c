@@ -1,6 +1,13 @@
 #include <pcap.h>
 #include <stdbool.h>
 #include <stdio.h>
+/*
+**DO NOT USE**
+pcap_findalldevs, pcap_compile, 
+pcap_setfilter, pcap_lookupdev, pcap_loop API
+*/
+
+
 
 void usage() {
 	printf("syntax: pcap-test <interface>\n");
