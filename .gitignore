@@ -1,7 +1,7 @@
 *.o
 *.stash
 *.user
-Makefile
+# Makefile
 pcap-test
 
 *.pcap
