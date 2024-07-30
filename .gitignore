@@ -4,3 +4,4 @@
 Makefile
 pcap-test
 
+*.pcap
