@@ -5,3 +5,5 @@ Makefile
 pcap-test
 
 *.pcap
+
+.vscode
