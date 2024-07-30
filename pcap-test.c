@@ -2,12 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <pcap.h>
-#include<libnet.h>
-/*
-**DO NOT USE**
-pcap_findalldevs, pcap_compile, 
-pcap_setfilter, pcap_lookupdev, pcap_loop API
-*/
+#include <libnet.h>
 
 void printTitle(const char* title) {
 	printf("====================================\n");
