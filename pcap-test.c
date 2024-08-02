@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <pcap.h>
 #include <libnet.h>
+#include <netinet/in.h>
 
 void printTitle(const char* title) {
 	printf("====================================\n");
@@ -25,8 +26,10 @@ void printEthMac(struct libnet_ethernet_hdr* ethernet) {
 }
 void printIPv4(struct libnet_ipv4_hdr* ipv4) {
 	printTitle("IPv4");
-	printf("Src IP : %s\n", inet_ntoa(ipv4->ip_src));
-	printf("Dst IP : %s\n", inet_ntoa(ipv4->ip_dst));
+	char* src_ip = inet_ntop(AF_INET, &ipv4->ip_src, NULL, 0);
+	char* dst_ip = inet_ntop(AF_INET, &ipv4->ip_dst, NULL, 0);
+	printf("Src IP : %s\n", src_ip);
+	printf("Dst IP : %s\n", dst_ip);
 }
 void printTCP(struct libnet_tcp_hdr* tcp) {
 	printTitle("TCP");
@@ -89,7 +92,8 @@ int main(int argc, char* argv[]) {
 		// 	printf("pcap_next_ex return %d(%s)\n", res, pcap_geterr(pcap));
 		// 	break;
 		// }
-
+		if(header->ip_p != 0x06) continue;
+		
         struct libnet_ethernet_hdr* ethernet;
 		struct libnet_ipv4_hdr* ipv4;
 		struct libnet_tcp_hdr* tcp;
